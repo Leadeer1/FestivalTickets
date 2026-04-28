@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DomainModelLayer\_BaseClasses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DDD.SharedKernel\DDD.SharedKernel.csproj" />
+  </ItemGroup>
+
 </Project>
