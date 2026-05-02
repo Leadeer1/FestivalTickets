@@ -14,7 +14,7 @@ namespace DDD.FestivalTickets.Core.DomainModelLayer.Events
     /// </summary>
     public class TicketPurchasedDomainEvent : IDomainEvent
     {
-        public DateTime Created    { get; }
+        public long Created    { get; }
         public long     TicketId   { get; }
         public long     CustomerId { get; }
         public long     ZoneId     { get; }
@@ -24,7 +24,7 @@ namespace DDD.FestivalTickets.Core.DomainModelLayer.Events
         {
             if (ticket == null) throw new ArgumentNullException(nameof(ticket));
 
-            Created    = DateTime.UtcNow;
+            Created    = DateTime.UtcNow.Ticks;
             TicketId   = ticket.Id;
             CustomerId = ticket.CustomerId;
             ZoneId     = ticket.ZoneId;
