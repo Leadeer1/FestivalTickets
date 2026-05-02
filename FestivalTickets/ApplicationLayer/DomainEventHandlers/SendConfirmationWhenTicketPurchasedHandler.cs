@@ -1,13 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DDD.FestivalTickets.Core.DomainModelLayer.Events;
+using DDD.FestivalTickets.Core.DomainModelLayer.Interfaces;
+using DDD.SharedKernel.ApplicationLayer;
 
 namespace DDD.FestivalTickets.Core.ApplicationLayer.DomainEventHandlers
 {
-    //XDDD cudowna nazwa ale nie ma nic lepszego, a przynajmniej nie przychodzi mi do głowy
-    internal class SendConfirmationWhenTicketPurchasedHandler
+    public class SendConfirmationWhenTicketPurchasedHandler : IEventHandler<TicketPurchasedDomainEvent>
     {
+        private readonly INotificationService _notificationService;
+        
+        public SendConfirmationWhenTicketPurchasedHandler(
+            INotificationService notificationService)
+        {
+            _notificationService = notificationService ?? throw new ArgumentNullException(nameof(notificationService));
+        }
+        public void Handle(TicketPurchasedDomainEvent eventData)
+        {
+            if (eventData == null)
+                throw new ArgumentNullException(nameof(eventData));
+
+            _notificationService.SendPurchaseConfirmation(
+                eventData.CustomerId,
+                eventData.TicketId,
+                eventData.FinalPrice
+            );
+        }
     }
+    
 }

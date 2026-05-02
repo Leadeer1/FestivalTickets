@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DDD.FestivalTickets.Core.ApplicationLayer.DTOs
 {
-    internal class ZoneDTO
+    public class ZoneDTO
     {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public int Capacity { get; set; }
+        public string Status { get; set; }
+        public decimal BaseTicketPriceAmount { get; set; }
+        public string BaseTicketPriceCurrency { get; set; }
+        public IList<ConcertDTO> Concerts { get; set; }
     }
 }

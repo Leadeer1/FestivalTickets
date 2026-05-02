@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DDD.FestivalTickets.Core.ApplicationLayer.Queries
+﻿namespace DDD.FestivalTickets.Core.ApplicationLayer.Queries
 {
-    internal class GetCustomerQuery
+    public class GetCustomerQuery
     {
+        public long CustomerId { get; set; }
     }
 }

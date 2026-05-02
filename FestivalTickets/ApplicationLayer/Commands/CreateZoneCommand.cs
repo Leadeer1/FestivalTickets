@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DDD.FestivalTickets.Core.ApplicationLayer.Commands
+﻿namespace DDD.FestivalTickets.Core.ApplicationLayer.Commands
 {
-    internal class CreateZoneCommand
+    public class CreateZoneCommand
     {
+        public long     ZoneId  { get; set; }
+        public string   ZoneName  { get; set; }
+        public int Capacity { get; set; }
+        public decimal  BaseTicketPrice  { get; set; }
+        public string TicketCurrency { get; set; }
     }
 }
