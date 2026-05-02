@@ -1,7 +1,9 @@
-﻿namespace DDD.SharedKernel.DomainModelLayer
+﻿using System;
+
+namespace DDD.SharedKernel.DomainModelLayer
 {
     public interface IDomainEvent
     {
-        long Created { get; }
+        DateTime Created { get; }
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using DDD.SharedKernel.DomainModelLayer;
+using System;
 
 namespace DDD.FestivalTickets.Core.DomainModelLayer.Events
 {

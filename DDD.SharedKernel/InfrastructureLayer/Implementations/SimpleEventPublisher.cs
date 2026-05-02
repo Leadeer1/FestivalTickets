@@ -11,9 +11,9 @@ namespace DDD.SharedKernel.InfrastructureLayer.Implementations
     {
         protected IServiceProvider _serviceProvider;
 
-        public SimpleEventPublisher(IServiceProvider servicePrivider)
+        public SimpleEventPublisher(IServiceProvider serviceProvider)
         {
-            _serviceProvider = servicePrivider;
+            _serviceProvider = serviceProvider;
         }
 
         public void Publish<T>(T domainEvent) 

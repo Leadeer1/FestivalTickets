@@ -4,11 +4,11 @@ namespace DDD.SharedKernel.DomainModelLayer.Implementations
 {
     public abstract class DomainEvent : IDomainEvent
     {
-        public long Created { get; protected set; }
+        public DateTime Created { get; protected set; }
 
         public DomainEvent()
         {
-            Created = DateTime.Now.Ticks;
+            Created = DateTime.UtcNow;
         }
     }
 }
