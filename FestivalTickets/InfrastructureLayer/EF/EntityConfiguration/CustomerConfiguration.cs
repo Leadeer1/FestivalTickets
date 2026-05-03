@@ -1,4 +1,4 @@
-using DDD.FestivalTickets.Core.DomainModelLayer.Models;
+﻿using DDD.FestivalTickets.Core.DomainModelLayer.Models;
 using DDD.FestivalTickets.Core.DomainModelLayer.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -12,6 +12,7 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
             builder.ToTable("Customers");
 
             builder.HasKey(c => c.Id);
+            builder.Property(c => c.Id).ValueGeneratedNever();
 
             builder.Property(c => c.FirstName)
                    .IsRequired()

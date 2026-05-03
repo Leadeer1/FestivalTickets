@@ -11,6 +11,7 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
             builder.ToTable("Concerts");
 
             builder.HasKey(c => c.Id);
+            builder.Property(c => c.Id).ValueGeneratedNever();
 
             builder.Property(c => c.ArtistName)
                    .IsRequired()

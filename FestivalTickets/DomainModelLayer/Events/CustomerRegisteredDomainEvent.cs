@@ -12,14 +12,14 @@ namespace DDD.FestivalTickets.Core.DomainModelLayer.Events
     /// </summary>
     public class CustomerRegisteredDomainEvent : IDomainEvent
     {
-        public long Created    { get; }
+        public DateTime Created    { get; }
         public long     CustomerId { get; }
         public string   FullName   { get; }
         public string   Email      { get; }
 
         public CustomerRegisteredDomainEvent(long customerId, string fullName, string email)
         {
-            Created    = DateTime.UtcNow.Ticks;
+            Created    = DateTime.UtcNow;
             CustomerId = customerId;
             FullName   = fullName;
             Email      = email;

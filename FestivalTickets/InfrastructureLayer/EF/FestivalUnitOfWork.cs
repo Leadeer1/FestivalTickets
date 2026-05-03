@@ -4,7 +4,7 @@ using DDD.SharedKernel.DomainModelLayer.Implementations;
 
 namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF
 {
-    internal class FestivalUnitOfWork : IFestivalUnitOfWork
+    public class FestivalUnitOfWork : IFestivalUnitOfWork
     {
         private readonly FestivalDbContext         _db;
         private readonly IDomainEventPublisher     _publisher;

@@ -7,7 +7,7 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer
     /// Implementacja konsolowa INotificationService.
     /// W produkcji podmień na SMTP / SendGrid – zero zmian w domenie i Application Layer.
     /// </summary>
-    internal class NotificationService : INotificationService
+    public class NotificationService : INotificationService
     {
         public void SendPurchaseConfirmation(long customerId, long ticketId, Money finalPrice)
         {
