@@ -15,14 +15,10 @@ using Microsoft.Data.Sqlite;
 
 var services = new ServiceCollection();
 
-// 1. Konfiguracja Bazy Danych (SQLite in-memory)
-// MUSIMY trzymać jedno połączenie otwarte przez cały czas trwania testu,
-// inaczej SQLite in-memory usunie bazę przy zamknięciu połączenia.
-var keepAliveConnection = new SqliteConnection("Data Source=:memory:");
-keepAliveConnection.Open();
-
+// 1. Konfiguracja Bazy Danych (Fizyczny plik SQLite)
+string dbPath = "festival.db";
 services.AddDbContext<FestivalDbContext>(options =>
-    options.UseSqlite(keepAliveConnection));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 // 2. Rejestracja Infrastruktury
 services.AddScoped<IFestivalUnitOfWork, FestivalUnitOfWork>();
@@ -58,7 +54,8 @@ var serviceProvider = services.BuildServiceProvider();
 using (var scope = serviceProvider.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<FestivalDbContext>();
-    context.Database.OpenConnection();
+    // USUWA bazę jeśli istnieje, żeby testy E2E zawsze startowały od zera
+    context.Database.EnsureDeleted(); 
     context.Database.EnsureCreated();
 }
 
