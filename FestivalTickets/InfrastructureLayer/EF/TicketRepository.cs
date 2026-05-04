@@ -39,7 +39,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF
                   .Where(t => t.CustomerId == customerId && t.Status == TicketStatus.Active)
                   .ToList();
 
-        // EventDay to VO z OwnsOne – EF mapuje przez EventDay_Date i EventDay_DayName
         public IList<Ticket> GetByZoneAndDay(long zoneId, EventDay eventDay)
             => _db.Tickets
                   .Where(t => t.ZoneId == zoneId &&

@@ -24,8 +24,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
                    .IsRequired()
                    .HasConversion<int>();
 
-            // VO Money (BaseTicketPrice) spłaszczone przez OwnsOne
-            // → kolumny: BaseTicketPrice_Amount, BaseTicketPrice_Currency
             builder.OwnsOne(z => z.BaseTicketPrice, price =>
             {
                 price.Property(p => p.Amount)
@@ -39,7 +37,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
                      .HasMaxLength(10);
             });
 
-            // Relacja: Zone 1 → N Concerts (encja wewnątrz agregatu)
             builder.HasMany(z => z.Concerts)
                    .WithOne()
                    .HasForeignKey(c => c.ZoneId)
