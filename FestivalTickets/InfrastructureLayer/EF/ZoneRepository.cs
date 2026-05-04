@@ -31,7 +31,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF
         public void Delete(Zone entity)
             => _db.Zones.Remove(entity);
 
-        // Eager loading kolekcji Concerts – używane gdy dodajemy koncert lub wyświetlamy program
         public Zone GetWithConcerts(long zoneId)
             => _db.Zones
                   .Include(z => z.Concerts)

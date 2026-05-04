@@ -34,7 +34,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
                      .IsUnique();
             });
 
-            // VO CustomerType spłaszczone przez OwnsOne → kolumna CustomerType_Value (int)
             builder.OwnsOne(c => c.CustomerType, ct =>
             {
                 ct.Property(x => x.Value)

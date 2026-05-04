@@ -22,7 +22,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
                    .IsRequired()
                    .HasConversion<int>();
 
-            // VO EventDay spłaszczone → EventDay_Date, EventDay_DayName
             builder.OwnsOne(t => t.EventDay, ed =>
             {
                 ed.Property(e => e.Date)
@@ -35,7 +34,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
                   .HasMaxLength(100);
             });
 
-            // VO Money (FinalPrice) spłaszczone → FinalPrice_Amount, FinalPrice_Currency
             builder.OwnsOne(t => t.FinalPrice, price =>
             {
                 price.Property(p => p.Amount)
@@ -49,7 +47,6 @@ namespace DDD.FestivalTickets.Core.InfrastructureLayer.EF.EntityConfiguration
                      .HasMaxLength(10);
             });
 
-            // Relacja: Ticket 1 → N TicketValidations (encja wewnątrz agregatu)
             builder.HasMany(t => t.Validations)
                    .WithOne()
                    .HasForeignKey(v => v.TicketId)
